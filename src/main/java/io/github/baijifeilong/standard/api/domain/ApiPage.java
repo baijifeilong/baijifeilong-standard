@@ -16,12 +16,12 @@ public class ApiPage<T> {
 
     private int pageIndex;
     private int itemsPerPage;
-    private int totalItems;
+    private long totalItems;
     private int totalPages;
     private int currentItemCount;
     private List<T> items;
 
-    private ApiPage(int pageIndex, int itemsPerPage, int totalItems, int totalPages, int currentItemCount, List<T> items) {
+    private ApiPage(int pageIndex, int itemsPerPage, long totalItems, int totalPages, int currentItemCount, List<T> items) {
         this.pageIndex = pageIndex;
         this.itemsPerPage = itemsPerPage;
         this.totalItems = totalItems;
@@ -34,7 +34,7 @@ public class ApiPage<T> {
         return new ApiPage<>(
                 page.getNumber() + 1,
                 page.getSize(),
-                (int) page.getTotalElements(),
+                page.getTotalElements(),
                 page.getTotalPages(),
                 page.getContent().size(),
                 page.getContent()
