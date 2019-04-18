@@ -29,4 +29,11 @@ public class ApiFailure {
     public static ApiFailure of(BizException bizException) {
         return of(bizException.getCode(), bizException.getMessage());
     }
+
+    public static ApiFailure of(Throwable throwable) {
+        if (throwable instanceof BizException) {
+            return of((BizException) throwable);
+        }
+        return of(BizException.DEFAULT_CODE, throwable.getMessage());
+    }
 }

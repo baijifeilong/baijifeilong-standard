@@ -14,7 +14,7 @@ public class BizExceptionTest {
     public void testBizExceptionWithoutArguments() {
         BizException bizException = new BizException();
         System.out.println("bizException = " + bizException);
-        assert bizException.getCode() == 10000;
+        assert bizException.getCode() == BizException.DEFAULT_CODE;
         assert bizException.getTemplate().equals("%s");
         assert bizException.getMessage().equals("未知错误");
         assert bizException.getLocalizedMessage().equals("未知错误");
@@ -24,7 +24,7 @@ public class BizExceptionTest {
     public void testBizExceptionWithOneArgument() {
         BizException bizException = new BizException("风萧萧");
         System.out.println("bizException = " + bizException);
-        assert bizException.getCode() == 10000;
+        assert bizException.getCode() == BizException.DEFAULT_CODE;
         assert bizException.getTemplate().equals("%s");
         assert bizException.getMessage().equals("风萧萧");
         assert bizException.getLocalizedMessage().equals("风萧萧");
@@ -41,8 +41,29 @@ public class BizExceptionTest {
         BizException bizException = new BizException(new RuntimeException("秋风"), "抛物线");
         System.out.println("bizException = " + bizException);
         bizException.printStackTrace();
-        assert bizException.getCode() == 10000;
+        assert bizException.getCode() == BizException.DEFAULT_CODE;
+        assert bizException.getMessage().equals("抛物线");
         assert bizException.getCause().getMessage().equals("秋风");
+    }
+
+    @Test
+    public void testBizExceptionWithNullThrowable() {
+        BizException bizException = new BizException(new RuntimeException(), "抛物线");
+        System.out.println("bizException = " + bizException);
+        bizException.printStackTrace();
+        assert bizException.getCode() == BizException.DEFAULT_CODE;
+        assert bizException.getMessage().equals("抛物线");
+        assert bizException.getCause().getMessage() == null;
+    }
+
+    @Test
+    public void testBizExceptionWithNullThrowableAndNullMessage() {
+        BizException bizException = new BizException(new RuntimeException());
+        System.out.println("bizException = " + bizException);
+        bizException.printStackTrace();
+        assert bizException.getCode() == BizException.DEFAULT_CODE;
+        assert bizException.getMessage().equals(BizException.DEFAULT_MESSAGE);
+        assert bizException.getCause().getMessage() == null;
     }
 
     @Test

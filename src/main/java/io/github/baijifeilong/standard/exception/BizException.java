@@ -6,11 +6,14 @@ import org.springframework.util.StringUtils;
 /**
  * Created by BaiJiFeiLong@gmail.com at 2019-04-18 16:05
  */
+@SuppressWarnings("WeakerAccess")
 public class BizException extends RuntimeException {
+    public static final int DEFAULT_CODE = 10000;
+    public static final String DEFAULT_MESSAGE = "未知错误";
     private Object[] args;
 
     public int getCode() {
-        return 10000;
+        return DEFAULT_CODE;
     }
 
     protected String getTemplate() {
@@ -18,7 +21,7 @@ public class BizException extends RuntimeException {
     }
 
     protected String getDefaultMessage() {
-        return "未知错误";
+        return DEFAULT_MESSAGE;
     }
 
     @Override
