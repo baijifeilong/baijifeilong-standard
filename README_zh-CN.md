@@ -100,10 +100,12 @@ package bj;
 
 import io.github.baijifeilong.standard.api.domain.ApiFailure;
 import io.github.baijifeilong.standard.api.domain.ApiSuccess;
+import io.github.baijifeilong.standard.exception.BizException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -128,8 +130,9 @@ public class App {
     }
 
     @ExceptionHandler(Throwable.class)
+    @ResponseStatus
     public Object onException(Throwable throwable) {
-        return ApiFailure.of(500, throwable.getMessage());
+        return ApiFailure.of(new BizException(throwable.getMessage()));
     }
 }
 ```
