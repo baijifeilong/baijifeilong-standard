@@ -1,5 +1,7 @@
 # BaijifeilongStandard [中文版](README_zh-CN.md)
 
+Baijifeilong's standard for Java development
+
 ## Standards
 
 ### 1. Standard for api responses
