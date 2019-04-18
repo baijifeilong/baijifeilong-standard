@@ -79,7 +79,7 @@ Features:
         <dependency>
             <groupId>io.github.baijifeilong</groupId>
             <artifactId>baijifeilong-standard</artifactId>
-            <version>1.2.0.RELEASE</version>
+            <version>1.2.1.RELEASE</version>
         </dependency>
     </dependencies>
     <repositories>

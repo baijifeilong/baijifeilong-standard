@@ -1,5 +1,6 @@
 package io.github.baijifeilong.standard.api.domain;
 
+import io.github.baijifeilong.standard.exception.BizException;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -8,7 +9,7 @@ import lombok.ToString;
  * <p>
  * 接口失败响应
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"unused"})
 @Getter
 @ToString
 public class ApiFailure {
@@ -23,5 +24,9 @@ public class ApiFailure {
 
     public static ApiFailure of(int code, String message) {
         return new ApiFailure(code, message);
+    }
+
+    public static ApiFailure of(BizException bizException) {
+        return of(bizException.getCode(), bizException.getMessage());
     }
 }

@@ -1,5 +1,8 @@
 package io.github.baijifeilong.standard.exception;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.baijifeilong.standard.api.domain.ApiFailure;
+import lombok.SneakyThrows;
 import org.junit.Test;
 
 /**
@@ -64,6 +67,18 @@ public class BizExceptionTest {
         System.out.println("usernameNotExist = " + usernameNotExist);
         assert usernameNotExist.getCode() == 11001;
         assert usernameNotExist.getMessage().equals("登录失败: 用户名(foo)不存在");
+    }
+
+    @Test
+    @SneakyThrows
+    public void testApiFailure() {
+        LoginException loginException = new LoginException("系统维护中");
+        ApiFailure apiFailure = ApiFailure.of(loginException);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(apiFailure);
+        System.out.println(json);
+        assert apiFailure.getCode() == 11000;
+        assert apiFailure.getMessage().equals("登录失败: 系统维护中");
     }
 }
 
