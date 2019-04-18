@@ -11,7 +11,6 @@ import java.util.List;
  * <p>
  * 接口分页
  */
-@SuppressWarnings("WeakerAccess")
 @Getter
 @ToString
 public class ApiPage<T> {

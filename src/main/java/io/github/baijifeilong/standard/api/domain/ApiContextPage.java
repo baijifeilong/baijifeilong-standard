@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Created by BaiJiFeiLong@gmail.com at 2019-04-18 13:24
  */
-@SuppressWarnings("WeakerAccess")
 @Getter
 @ToString
 public class ApiContextPage<T> {
