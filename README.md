@@ -51,7 +51,8 @@
     "items" : [ "foo", "bar", "baz" ],
     "startIndex" : 1111,
     "previousIndex" : 1111,
-    "nextIndex" : 9999
+    "nextIndex" : 9999,
+    "currentItemCount" : 3
   }
 }
 ```
