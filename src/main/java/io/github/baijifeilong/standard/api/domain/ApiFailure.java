@@ -7,6 +7,7 @@ import lombok.Getter;
  * <p>
  * 接口失败响应
  */
+@SuppressWarnings("unused")
 @Getter
 public class ApiFailure {
 
