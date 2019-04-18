@@ -66,7 +66,7 @@
         <dependency>
             <groupId>io.github.baijifeilong</groupId>
             <artifactId>baijifeilong-standard</artifactId>
-            <version>1.1.0.RELEASE</version>
+            <version>1.1.1.RELEASE</version>
         </dependency>
     </dependencies>
     <repositories>
