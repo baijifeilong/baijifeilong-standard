@@ -81,7 +81,7 @@ Features:
         <dependency>
             <groupId>io.github.baijifeilong</groupId>
             <artifactId>baijifeilong-standard</artifactId>
-            <version>1.2.2.RELEASE</version>
+            <version>1.2.3.RELEASE</version>
         </dependency>
     </dependencies>
     <repositories>

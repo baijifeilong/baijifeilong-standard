@@ -26,6 +26,14 @@ public class ApiFailure {
         return new ApiFailure(code, message);
     }
 
+    public static ApiFailure of(int code) {
+        return new ApiFailure(code, BizException.DEFAULT_MESSAGE);
+    }
+
+    public static ApiFailure of(String message) {
+        return new ApiFailure(BizException.DEFAULT_CODE, message);
+    }
+
     public static ApiFailure of(BizException bizException) {
         return of(bizException.getCode(), bizException.getMessage());
     }
