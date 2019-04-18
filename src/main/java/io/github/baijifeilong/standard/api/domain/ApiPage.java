@@ -1,6 +1,7 @@
 package io.github.baijifeilong.standard.api.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @SuppressWarnings("WeakerAccess")
 @Getter
+@ToString
 public class ApiPage<T> {
 
     private int pageIndex;

@@ -1,6 +1,7 @@
 package io.github.baijifeilong.standard.api.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("WeakerAccess")
 @Getter
+@ToString
 public class ApiContextPage<T> {
 
     private List<T> items;

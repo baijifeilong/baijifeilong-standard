@@ -1,14 +1,16 @@
 package io.github.baijifeilong.standard.api.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Created by BaiJiFeiLong@gmail.com at 2018/12/28 上午11:13
  * <p>
  * 接口失败响应
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 @Getter
+@ToString
 public class ApiFailure {
 
     private int code;

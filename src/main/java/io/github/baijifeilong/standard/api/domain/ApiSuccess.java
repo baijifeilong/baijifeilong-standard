@@ -1,6 +1,7 @@
 package io.github.baijifeilong.standard.api.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -12,9 +13,10 @@ import java.util.List;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Getter
+@ToString
 public class ApiSuccess<T> {
 
-    private Object data;
+    private T data;
 
     private ApiSuccess(T data) {
         this.data = data;
@@ -28,7 +30,7 @@ public class ApiSuccess<T> {
         return of(ApiPage.of(t));
     }
 
-    public static <T> ApiSuccess<ApiContextPage<T>> ofContextPage(List<T> items, long previousIndex, long nextIndex) {
+    public static <T> ApiSuccess<ApiContextPage<T>> ofContextPage(List<T> items, Object previousIndex, Object nextIndex) {
         return of(ApiContextPage.of(items, previousIndex, nextIndex));
     }
 }
