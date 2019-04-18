@@ -57,6 +57,7 @@ public class ApiDomainTests {
         assert apiContextPage.getStartIndex().equals(1111);
         assert apiContextPage.getPreviousIndex().equals(1111);
         assert apiContextPage.getNextIndex().equals(9999);
+        assert apiContextPage.getCurrentItemCount() == 3;
     }
 
     @Test
@@ -80,5 +81,6 @@ public class ApiDomainTests {
         assert apiSuccessOfContextPage.getData().getStartIndex().equals(1111);
         assert apiSuccessOfContextPage.getData().getPreviousIndex().equals(1111);
         assert apiSuccessOfContextPage.getData().getNextIndex().equals(9999);
+        assert apiSuccessOfContextPage.getData().getCurrentItemCount() == 3;
     }
 }

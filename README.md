@@ -58,7 +58,7 @@
 
 ## Usage
 
-### POM for Maven project
+### 1. POM for Maven project
 
 ```xml
 <project>
@@ -76,5 +76,45 @@
         </repository>
     </repositories>
 </project>
+```
 
+### 2. Usage in SpringBoot application
+
+```java
+package bj;
+
+import io.github.baijifeilong.standard.api.domain.ApiFailure;
+import io.github.baijifeilong.standard.api.domain.ApiSuccess;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
+
+@SpringBootApplication
+@RestController
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+
+    @RequestMapping("/")
+    public Object index() {
+        if (ThreadLocalRandom.current().nextBoolean()) {
+            throw new RuntimeException("Game Over");
+        }
+        return ApiSuccess.ofContextPage(new ArrayList<String>() {{
+            add("hello");
+            add("world");
+        }}, 111, 999);
+    }
+
+    @ExceptionHandler(Throwable.class)
+    public Object onException(Throwable throwable) {
+        return ApiFailure.of(500, throwable.getMessage());
+    }
+}
 ```

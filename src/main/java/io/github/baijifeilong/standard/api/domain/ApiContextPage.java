@@ -18,12 +18,14 @@ public class ApiContextPage<T> {
     private Object startIndex;
     private Object previousIndex;
     private Object nextIndex;
+    private int currentItemCount;
 
     private ApiContextPage(List<T> items, Object previousIndex, Object nextIndex) {
         this.items = new ArrayList<>(items);
         this.previousIndex = previousIndex;
         this.nextIndex = nextIndex;
         this.startIndex = this.previousIndex;
+        this.currentItemCount = items.size();
     }
 
     public static <T> ApiContextPage<T> of(List<T> items, Object previousIndex, Object nextIndex) {
