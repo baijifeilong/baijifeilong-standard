@@ -1,5 +1,7 @@
 package io.github.baijifeilong.standard.api.domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.data.domain.Page;
@@ -20,10 +22,17 @@ public class ApiDomainTests {
         add("baz");
     }}, PageRequest.of(2, 3), 10);
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    @SneakyThrows
+    private void dumpIt(Object object) {
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object));
+    }
+
     @Test
     public void testFailure() {
         ApiFailure apiFailure = ApiFailure.of(404, "Not Found");
-        log.info("apiFailure = \n{}", apiFailure);
+        dumpIt(apiFailure);
         assert apiFailure.getCode() == 404;
         assert apiFailure.getMessage().equals("Not Found");
     }
@@ -31,7 +40,7 @@ public class ApiDomainTests {
     @Test
     public void testPage() {
         ApiPage apiPage = ApiPage.of(stringPage);
-        log.info("apiPage = \n{}", apiPage);
+        dumpIt(apiPage);
         assert apiPage.getPageIndex() == 3;
         assert apiPage.getItemsPerPage() == 3;
         assert apiPage.getTotalItems() == 10;
@@ -43,7 +52,7 @@ public class ApiDomainTests {
     @Test
     public void testContextPage() {
         ApiContextPage<String> apiContextPage = ApiContextPage.of(stringPage.getContent(), 1111, 9999);
-        log.info("apiContextPage = \n{}", apiContextPage);
+        dumpIt(apiContextPage);
         assert apiContextPage.getItems().size() == 3;
         assert apiContextPage.getStartIndex().equals(1111);
         assert apiContextPage.getPreviousIndex().equals(1111);
@@ -53,11 +62,11 @@ public class ApiDomainTests {
     @Test
     public void testSuccess() {
         ApiSuccess<String> apiSuccess = ApiSuccess.of("OK");
-        log.info("apiSuccess = \n{}", apiSuccess);
+        dumpIt(apiSuccess);
         assert apiSuccess.getData().equals("OK");
 
         ApiSuccess<ApiPage<String>> apiSuccessOfPage = ApiSuccess.ofPage(stringPage);
-        log.info("apiSuccessOfPage = \n{}", apiSuccessOfPage);
+        dumpIt(apiSuccessOfPage);
         assert apiSuccessOfPage.getData().getPageIndex() == 3;
         assert apiSuccessOfPage.getData().getItemsPerPage() == 3;
         assert apiSuccessOfPage.getData().getTotalItems() == 10;
@@ -66,7 +75,7 @@ public class ApiDomainTests {
         assert apiSuccessOfPage.getData().getItems().size() == 3;
 
         ApiSuccess<ApiContextPage<String>> apiSuccessOfContextPage = ApiSuccess.ofContextPage(stringPage.getContent(), 1111, 9999);
-        log.info("apiSuccessOfContextPage = \n{}", apiSuccessOfContextPage);
+        dumpIt(apiSuccessOfContextPage);
         assert apiSuccessOfContextPage.getData().getItems().size() == 3;
         assert apiSuccessOfContextPage.getData().getStartIndex().equals(1111);
         assert apiSuccessOfContextPage.getData().getPreviousIndex().equals(1111);
