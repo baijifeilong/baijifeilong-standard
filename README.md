@@ -200,3 +200,7 @@ class LoginException extends BizException {
     }
 }
 ```
+
+## 协议
+
+LGPL-3.0
