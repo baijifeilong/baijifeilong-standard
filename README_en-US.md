@@ -1,17 +1,17 @@
-# 白季飞龙的Java开发标准 [English Version](README.md)
+# BaijifeilongStandard [中文版](README.md)
 
-白季飞龙的Java开发标准
+Baijifeilong's standard for Java development
 
-## 标准列表
+## Standards
 
-### 1. API响应标准
+### 1. Standard for api responses
 
 - `io.github.baijifeilong.standard.api.domain.ApiFailure.of`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.of`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofPage`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofContextPage`
 
-#### 1.1 失败响应
+#### 1.1 Response for failure
 
 ```json
 {
@@ -20,7 +20,7 @@
 }
 ```
 
-#### 1.2 成功响应
+#### 1.2 Response for success
 
 ```json
 {
@@ -28,7 +28,7 @@
 }
 ```
 
-##### 1.2.1 成功响应带分页
+##### 1.2.1 Response for success of page
 
 ```json
 {
@@ -43,7 +43,7 @@
 }
 ```
 
-##### 1.2.2 成功响应带上下文分页
+##### 1.2.2 Response for success of context page
 
 ```json
 {
@@ -57,23 +57,23 @@
 }
 ```
 
-### 2. 业务异常标准
+### 2. Standard for business exceptions
 
-一个业务异常的基类
+A base class for business exceptions.
 
 - `io.github.baijifeilong.standard.exception.BizException.BizException(java.lang.Throwable, java.lang.Object...)`
 - `io.github.baijifeilong.standard.exception.BizException.BizException(java.lang.Object...)`
 
-特点:
+Features:
 
-- 支持整型状态码
-- 支持默认状态码
-- 支持默认错误消息
-- 支持消息模板
+- Support status code (Integer)
+- Support default code
+- Support default message
+- Support message template
 
-## 使用
+## Usage
 
-### 1. 在Maven项目中使用的POM文件示例
+### 1. POM for Maven project
 
 ```xml
 <project>
@@ -93,9 +93,9 @@
 </project>
 ```
 
-### 2. 使用演示
+### 2. Demonstrations
 
-### 2.1 API标准演示(SpringBoot应用)
+### 2.1 Api standard usage in SpringBoot application
 
 ```java
 package bj;
@@ -139,7 +139,7 @@ public class App {
 }
 ```
 
-### 2.2 异常标准演示
+### 2.2 Exception standard demonstration
 
 ```java
 class BizException extends AbstractBizException {
