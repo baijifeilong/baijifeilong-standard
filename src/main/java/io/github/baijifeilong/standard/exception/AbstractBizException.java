@@ -7,22 +7,16 @@ import org.springframework.util.StringUtils;
  * Created by BaiJiFeiLong@gmail.com at 2019-04-18 16:05
  */
 @SuppressWarnings("WeakerAccess")
-public class BizException extends RuntimeException {
-    public static final int DEFAULT_CODE = 10000;
-    public static final String DEFAULT_MESSAGE = "未知错误";
+abstract public class AbstractBizException extends RuntimeException implements IBizException {
     private Object[] args;
 
-    public int getCode() {
-        return DEFAULT_CODE;
-    }
+    abstract public int getCode();
 
     protected String getTemplate() {
         return "%s";
     }
 
-    protected String getDefaultMessage() {
-        return DEFAULT_MESSAGE;
-    }
+    abstract protected String getDefaultMessage();
 
     @Override
     public String getMessage() {
@@ -32,17 +26,12 @@ public class BizException extends RuntimeException {
         return String.format(getTemplate(), args);
     }
 
-    @Override
-    public String getLocalizedMessage() {
-        return getMessage();
-    }
-
-    public BizException(Throwable throwable, Object... args) {
+    public AbstractBizException(Throwable throwable, Object... args) {
         super(throwable);
         this.args = args;
     }
 
-    public BizException(Object... args) {
+    public AbstractBizException(Object... args) {
         super();
         this.args = args;
     }

@@ -142,72 +142,24 @@ public class App {
 ### 2.2 异常标准演示
 
 ```java
-package io.github.baijifeilong.standard.exception;
+class BizException extends AbstractBizException {
 
-import org.junit.Test;
-
-/**
- * Created by BaiJiFeiLong@gmail.com at 2019-04-18 16:32
- */
-public class BizExceptionTest {
-
-    @Test
-    public void testBizExceptionWithoutArguments() {
-        BizException bizException = new BizException();
-        System.out.println("bizException = " + bizException);
-        assert bizException.getCode() == 10000;
-        assert bizException.getTemplate().equals("%s");
-        assert bizException.getMessage().equals("未知错误");
-        assert bizException.getLocalizedMessage().equals("未知错误");
+    @Override
+    public int getCode() {
+        return 10000;
     }
 
-    @Test
-    public void testBizExceptionWithOneArgument() {
-        BizException bizException = new BizException("风萧萧");
-        System.out.println("bizException = " + bizException);
-        assert bizException.getCode() == 10000;
-        assert bizException.getTemplate().equals("%s");
-        assert bizException.getMessage().equals("风萧萧");
-        assert bizException.getLocalizedMessage().equals("风萧萧");
+    @Override
+    protected String getDefaultMessage() {
+        return "未知错误";
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testBizExceptionWithTwoArguments() {
-        BizException bizException = new BizException("风萧萧", "易水寒");
-        System.out.println("bizException = " + bizException);
+    BizException(Throwable throwable, Object... args) {
+        super(throwable, args);
     }
 
-    @Test
-    public void testBizExceptionWithThrowable() {
-        BizException bizException = new BizException(new RuntimeException("秋风"), "抛物线");
-        System.out.println("bizException = " + bizException);
-        bizException.printStackTrace();
-        assert bizException.getCode() == 10000;
-        assert bizException.getCause().getMessage().equals("秋风");
-    }
-
-    @Test
-    public void testLoginExceptionWithoutArguments() {
-        LoginException loginException = new LoginException();
-        System.out.println("loginException = " + loginException);
-        assert loginException.getCode() == 11000;
-        assert loginException.getMessage().equals("登录失败: 未知错误");
-    }
-
-    @Test
-    public void testLoginExceptionWithOneArgument() {
-        LoginException loginException = new LoginException("用户已被禁用");
-        System.out.println("loginException = " + loginException);
-        assert loginException.getCode() == 11000;
-        assert loginException.getMessage().equals("登录失败: 用户已被禁用");
-    }
-
-    @Test
-    public void testUsernameNotExist() {
-        LoginException.UsernameNotExist usernameNotExist = new LoginException.UsernameNotExist("foo");
-        System.out.println("usernameNotExist = " + usernameNotExist);
-        assert usernameNotExist.getCode() == 11001;
-        assert usernameNotExist.getMessage().equals("登录失败: 用户名(foo)不存在");
+    BizException(Object... args) {
+        super(args);
     }
 }
 
