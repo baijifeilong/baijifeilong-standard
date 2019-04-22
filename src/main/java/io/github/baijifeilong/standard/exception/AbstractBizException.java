@@ -6,7 +6,6 @@ import org.springframework.util.StringUtils;
 /**
  * Created by BaiJiFeiLong@gmail.com at 2019-04-18 16:05
  */
-@SuppressWarnings("WeakerAccess")
 abstract public class AbstractBizException extends RuntimeException implements IBizException {
     private Object[] args;
 

@@ -9,7 +9,7 @@
 - `io.github.baijifeilong.standard.api.domain.ApiFailure.of`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.of`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofPage`
-- `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofContextPage`
+- `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofRelativePage`
 
 #### 1.1 失败响应
 
@@ -43,7 +43,7 @@
 }
 ```
 
-##### 1.2.2 成功响应带上下文分页
+##### 1.2.2 成功响应带相对分页
 
 ```json
 {

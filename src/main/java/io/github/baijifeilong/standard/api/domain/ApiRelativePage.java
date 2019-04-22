@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @ToString
-public class ApiContextPage<T> {
+public class ApiRelativePage<T> {
 
     private List<T> items;
     private Object startIndex;
@@ -19,7 +19,7 @@ public class ApiContextPage<T> {
     private Object nextIndex;
     private int currentItemCount;
 
-    private ApiContextPage(List<T> items, Object previousIndex, Object nextIndex) {
+    private ApiRelativePage(List<T> items, Object previousIndex, Object nextIndex) {
         this.items = new ArrayList<>(items);
         this.previousIndex = previousIndex;
         this.nextIndex = nextIndex;
@@ -27,7 +27,7 @@ public class ApiContextPage<T> {
         this.currentItemCount = items.size();
     }
 
-    public static <T> ApiContextPage<T> of(List<T> items, Object previousIndex, Object nextIndex) {
-        return new ApiContextPage<>(items, previousIndex, nextIndex);
+    public static <T> ApiRelativePage<T> of(List<T> items, Object previousIndex, Object nextIndex) {
+        return new ApiRelativePage<>(items, previousIndex, nextIndex);
     }
 }

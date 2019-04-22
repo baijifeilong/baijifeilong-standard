@@ -30,7 +30,7 @@ public class ApiSuccess<T> {
         return of(ApiPage.of(t));
     }
 
-    public static <T> ApiSuccess<ApiContextPage<T>> ofContextPage(List<T> items, Object previousIndex, Object nextIndex) {
-        return of(ApiContextPage.of(items, previousIndex, nextIndex));
+    public static <T> ApiSuccess<ApiRelativePage<T>> ofRelativePage(List<T> items, Object previousIndex, Object nextIndex) {
+        return of(ApiRelativePage.of(items, previousIndex, nextIndex));
     }
 }

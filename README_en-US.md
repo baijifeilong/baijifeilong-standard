@@ -9,7 +9,7 @@ Baijifeilong's standard for Java development
 - `io.github.baijifeilong.standard.api.domain.ApiFailure.of`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.of`
 - `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofPage`
-- `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofContextPage`
+- `io.github.baijifeilong.standard.api.domain.ApiSuccess.ofRelativePage`
 
 #### 1.1 Response for failure
 
@@ -43,7 +43,7 @@ Baijifeilong's standard for Java development
 }
 ```
 
-##### 1.2.2 Response for success of context page
+##### 1.2.2 Response for success of relative page
 
 ```json
 {

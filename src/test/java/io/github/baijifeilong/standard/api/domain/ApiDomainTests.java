@@ -51,13 +51,13 @@ public class ApiDomainTests {
 
     @Test
     public void testContextPage() {
-        ApiContextPage<String> apiContextPage = ApiContextPage.of(stringPage.getContent(), 1111, 9999);
-        dumpIt(apiContextPage);
-        assert apiContextPage.getItems().size() == 3;
-        assert apiContextPage.getStartIndex().equals(1111);
-        assert apiContextPage.getPreviousIndex().equals(1111);
-        assert apiContextPage.getNextIndex().equals(9999);
-        assert apiContextPage.getCurrentItemCount() == 3;
+        ApiRelativePage<String> apiRelativePage = ApiRelativePage.of(stringPage.getContent(), 1111, 9999);
+        dumpIt(apiRelativePage);
+        assert apiRelativePage.getItems().size() == 3;
+        assert apiRelativePage.getStartIndex().equals(1111);
+        assert apiRelativePage.getPreviousIndex().equals(1111);
+        assert apiRelativePage.getNextIndex().equals(9999);
+        assert apiRelativePage.getCurrentItemCount() == 3;
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ApiDomainTests {
         assert apiSuccessOfPage.getData().getCurrentItemCount() == 3;
         assert apiSuccessOfPage.getData().getItems().size() == 3;
 
-        ApiSuccess<ApiContextPage<String>> apiSuccessOfContextPage = ApiSuccess.ofContextPage(stringPage.getContent(), 1111, 9999);
+        ApiSuccess<ApiRelativePage<String>> apiSuccessOfContextPage = ApiSuccess.ofRelativePage(stringPage.getContent(), 1111, 9999);
         dumpIt(apiSuccessOfContextPage);
         assert apiSuccessOfContextPage.getData().getItems().size() == 3;
         assert apiSuccessOfContextPage.getData().getStartIndex().equals(1111);
